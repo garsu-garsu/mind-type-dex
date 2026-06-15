@@ -2,7 +2,7 @@
 
 # 🦉 마음 유형 도감 (Mind Type Dex)
 
-**매일 한 번, 짧은 마음 테스트로 '오늘의 나'를 진단하고 16종 유형을 모으는 토스 미니앱**
+**매일 한 번, 짧은 마음 테스트로 '오늘의 나'를 진단하고 64종 유형을 모으는 토스 미니앱**
 
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -35,7 +35,7 @@
 
 | | |
 |---|---|
-| **무엇을** | 매일 4문항에 답해 16종 '마음 유형' 중 오늘의 나를 진단하고 수집하는 비게임 콘텐츠 |
+| **무엇을** | 매일 6문항에 답해 64종 '마음 유형' 중 오늘의 나를 진단하고 수집하는 비게임 콘텐츠 |
 | **어디서** | 토스 앱 내 미니앱 (3,000만 토스 유저 노출) |
 | **누구를 위해** | 가볍게 자기 이해·취향 탐색을 즐기는 성인 사용자 |
 | **누가** | 1인 기획·개발 (프론트엔드 + 콘텐츠 설계 + 광고 경제 설계 + 출시 정책) |
@@ -43,8 +43,8 @@
 ---
 
 ## ✨ 핵심 기능
-- **비게임 코어 — 심리/취향 진단** : 4개 이분 축(에너지·결정·리듬·시선)에 답하면 4비트 → 16종 유형으로 **결정적 매핑**. 점수·승패가 없어 게임이 아닌 콘텐츠예요.
-- **유형 도감 수집** : 매일 달라지는 결과를 모아 16칸을 채우고, 새싹 분석가 → 마음 박사까지 등급이 올라가요.
+- **비게임 코어 — 심리/취향 진단** : 6개 이분 축(에너지·결정·리듬·시선·도전·표현)에 답하면 6비트 → 64종 유형으로 **결정적 매핑**. 점수·승패가 없어 게임이 아닌 콘텐츠예요.
+- **유형 도감 수집** : 매일 달라지는 결과를 모아 64칸을 채우고, 새싹 분석가 → 마음 박사까지 등급이 올라가요.
 - **연속 기록(streak)** : KST 자정 기준 일일 리셋. 끊길 위기엔 `광고 보고 연속 기록 지키기`로 복구.
 - **선택형 광고 게이트** : `상세 해석 해금`·`오늘 하나 더`·`연속 지키기`를 보상형 광고로. 모두 **결정적 보상**(확률·뽑기 없음)이라 사행성 표면이 없어요.
 - **공유 카드** : 오늘의 유형을 `getTossShareLink` + `share`로 친구에게 자랑.
@@ -73,7 +73,7 @@
 ```mermaid
 flowchart LR
     Home[홈: 등급·연속·수집] --> Test[테스트 4문항]
-    Test -->|4비트 → 16유형| Result[결과 카드]
+    Test -->|6비트 → 64유형| Result[결과 카드]
     Result -->|📺 보상형| Unlock[상세 해석 해금]
     Result --> Dex[유형 도감]
     Dex --> Home
@@ -132,7 +132,7 @@ src/
 ├─ lib/         env · analytics · tossEnv · dateKey(KST 서버시각)
 ├─ hooks/       useAdGate · useInterstitialAd · useDexState(수집·연속·해금)
 ├─ components/  BannerAd (화면당 1개)
-├─ data/        types(16유형·문항·매핑) · share · notify
+├─ data/        types(64유형·문항·매핑) · share · notify
 ├─ screens/     Home · Test · Result · Dex
 └─ App.tsx      view 상태 머신 + 토스 back 이벤트 연결
 scripts/        Playwright 전 화면 스크린샷

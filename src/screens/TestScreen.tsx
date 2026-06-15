@@ -18,13 +18,7 @@ export function TestScreen({ today, onDone, onBack }: Props) {
   const pick = (bit: number) => {
     const nextBits = [...bits, bit];
     if (step + 1 >= questions.length) {
-      const id = answersToTypeId([
-        nextBits[0],
-        nextBits[1],
-        nextBits[2],
-        nextBits[3],
-      ]);
-      onDone(id);
+      onDone(answersToTypeId(nextBits));
       return;
     }
     setBits(nextBits);

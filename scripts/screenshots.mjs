@@ -33,10 +33,10 @@ async function waitText(page, text, timeout = 12000) {
   await page.getByText(text, { exact: false }).first().waitFor({ timeout });
 }
 
-/** 4문항 테스트를 bits 패턴대로 응답 (옵션 버튼 0/1) */
+/** 테스트를 bits 패턴대로 응답 (옵션 버튼 0/1, 문항 수만큼 반복) */
 async function answerTest(page, bits) {
-  for (let i = 0; i < 4; i++) {
-    await page.waitForTimeout(300);
+  for (let i = 0; i < bits.length; i++) {
+    await page.waitForTimeout(280);
     await tapButton(page, bits[i]); // 0=첫째 옵션, 1=둘째 옵션
   }
 }
@@ -61,7 +61,7 @@ await waitText(page, "Q1.");
 await shot(page, "test-question");
 
 // 3) 응답 완료 → 결과
-await answerTest(page, [0, 0, 0, 0]);
+await answerTest(page, [0, 0, 0, 0, 0, 0]);
 await waitText(page, "오늘의 마음 유형");
 await shot(page, "result");
 
@@ -75,13 +75,18 @@ await tapText(page, "홈으로");
 await waitText(page, "오늘 테스트 한 번 더");
 
 const patterns = [
-  [1, 0, 0, 0],
-  [0, 1, 0, 0],
-  [1, 1, 0, 0],
-  [0, 0, 1, 0],
-  [1, 0, 1, 1],
-  [0, 1, 1, 1],
-  [1, 1, 1, 1],
+  [1, 0, 0, 0, 0, 0],
+  [0, 1, 0, 0, 0, 0],
+  [1, 1, 0, 0, 1, 0],
+  [0, 0, 1, 0, 0, 1],
+  [1, 0, 1, 1, 1, 0],
+  [0, 1, 1, 1, 0, 1],
+  [1, 1, 1, 1, 1, 1],
+  [0, 0, 0, 1, 1, 0],
+  [1, 0, 0, 0, 1, 1],
+  [0, 1, 0, 1, 0, 0],
+  [1, 1, 0, 0, 0, 1],
+  [0, 0, 1, 1, 1, 1],
 ];
 for (const bits of patterns) {
   await tapText(page, "오늘 테스트 한 번 더");
