@@ -50,6 +50,8 @@ const ctx = await browser.newContext({
   isMobile: true,
   hasTouch: true,
 });
+// 소개 화면은 첫 실행에만 떠요 — 투어는 본 화면부터 찍어야 하니 미리 본 것으로 표시해요.
+await ctx.addInitScript((k) => localStorage.setItem(k, "1"), "mtd:onboarded");
 const page = await ctx.newPage();
 
 // 1) 홈 (신규)
