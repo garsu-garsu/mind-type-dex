@@ -17,5 +17,7 @@ export default defineConfig({
   },
   permissions: [],
   outdir: "dist",
-  navigationBar: { withBackButton: true, withHomeButton: false },
+  // 심사 반려(관상 셀프 분석): 네이티브 뒤로가기와 앱 자체 화면 이동이 겹쳐 보인다는
+  // 지적을 받아 네이티브 뒤로가기를 껐어요. 화면 안의 버튼과 시스템 뒤로가기로 이동해요.
+  navigationBar: { withBackButton: false, withHomeButton: false },
 });
