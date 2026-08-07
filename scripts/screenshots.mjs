@@ -7,7 +7,9 @@ const BASE = "http://localhost:5173/";
 const OUT = "screenshots";
 mkdirSync(OUT, { recursive: true });
 
-const VIEWPORT = { width: 390, height: 844 };
+// 토스 콘솔 세로 스크린샷 규격은 636x1048 정확히 — 리사이즈가 안 되니
+// 배율 2배로 렌더해서 그 해상도로 바로 찍어요(318x524 @2x = 636x1048).
+const VIEWPORT = { width: 318, height: 524 };
 let n = 0;
 
 async function shot(page, name) {
