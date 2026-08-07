@@ -52,9 +52,9 @@ export function HomeScreen({
 
   return (
     <div style={{ paddingBottom: 32 }}>
-      <Top
         {/* 앱 이름은 토스 상단 바가 이미 보여줘요. 여기서 또 쓰면 헤더가 겹쳐 보여
-            "자체 헤더 중복"으로 심사 반려돼요. 대신 무엇을 얻는지를 적어요. */}
+        "자체 헤더 중복"으로 심사 반려돼요. 대신 무엇을 얻는지를 적어요. */}
+      <Top
         title={
           <Top.TitleParagraph size={28}>6문항 성격 유형 테스트</Top.TitleParagraph>
         }

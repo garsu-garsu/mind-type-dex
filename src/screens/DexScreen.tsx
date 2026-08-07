@@ -18,8 +18,8 @@ export function DexScreen({ collected, onBack }: Props) {
 
   return (
     <div style={{ paddingBottom: 32 }}>
-      <Top
         {/* 앱 이름은 토스 상단 바가 이미 보여줘요 — 여기선 이 화면이 뭔지만 적어요. */}
+      <Top
         title={<Top.TitleParagraph size={22}>내가 모은 유형</Top.TitleParagraph>}
         subtitleBottom={
           <Top.SubtitleParagraph size={15}>

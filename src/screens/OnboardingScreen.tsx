@@ -17,8 +17,8 @@ const STEPS = [
 export function OnboardingScreen({ onStart }: Props) {
   return (
     <div style={{ paddingBottom: 32 }}>
-      <Top
         {/* 앱 이름은 토스 상단 바가 이미 보여줘요 — 여기서 또 쓰면 헤더가 겹쳐 보여요. */}
+      <Top
         title={<Top.TitleParagraph size={28}>성격 유형 테스트</Top.TitleParagraph>}
         subtitleBottom={
           <Top.SubtitleParagraph size={15}>
