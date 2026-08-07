@@ -3,7 +3,7 @@ import { defineConfig } from "@apps-in-toss/web-framework/config";
 export default defineConfig({
   appName: "mind-type-dex",
   brand: {
-    displayName: "마음 유형 도감", // 화면에 노출될 한글 앱 이름
+    displayName: "성격유형 테스트", // 화면에 노출될 한글 앱 이름
     primaryColor: "#7B6EF6", // 발랄·귀여운 페리윙클 (심리/마음 테마)
     icon: "https://static.toss.im/appsintoss/13203/a029f591-1d32-4aed-ac9a-0072d1a5b21a.png", // 배포 시 아이콘 이미지 주소
   },
