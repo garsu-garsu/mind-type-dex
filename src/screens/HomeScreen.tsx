@@ -1,4 +1,4 @@
-import { Button, TextButton, Top, useToast } from "@toss/tds-mobile";
+import { Button, ProgressBar, TextButton, Top, useToast } from "@toss/tds-mobile";
 
 import { BannerAd } from "../components/BannerAd";
 import { canRequestNotifyConsent, requestNotifyConsent } from "../data/notify";
@@ -40,6 +40,7 @@ export function HomeScreen({
   const todayEntry = state.history.find((h) => h.dateKey === today);
   const todayType =
     todayEntry != null ? TYPES[todayEntry.typeId] : null;
+  const remaining = TOTAL_TYPES - state.collected.length;
 
   const onNotify = async () => {
     const r = await requestNotifyConsent();
@@ -52,12 +53,14 @@ export function HomeScreen({
   return (
     <div style={{ paddingBottom: 32 }}>
       <Top
+        {/* 앱 이름은 토스 상단 바가 이미 보여줘요. 여기서 또 쓰면 헤더가 겹쳐 보여
+            "자체 헤더 중복"으로 심사 반려돼요. 대신 무엇을 얻는지를 적어요. */}
         title={
-          <Top.TitleParagraph size={28}>마음 유형 도감</Top.TitleParagraph>
+          <Top.TitleParagraph size={28}>6문항 성격 유형 테스트</Top.TitleParagraph>
         }
         subtitleBottom={
           <Top.SubtitleParagraph size={15}>
-            매일 한 번, 오늘의 나는 어떤 유형일까요?
+            오늘의 나는 어떤 유형일까요? 여섯 번만 고르면 끝나요.
           </Top.SubtitleParagraph>
         }
       />
@@ -89,6 +92,27 @@ export function HomeScreen({
           }}
         >
           {rank.label}
+        </div>
+
+        {/* 도감 진행률 — 몇 종 남았는지 보이는 게 가장 센 재방문 이유예요 */}
+        <div style={{ marginTop: 14 }}>
+          <ProgressBar
+            size="normal"
+            progress={state.collected.length / TOTAL_TYPES}
+          />
+          <div
+            style={{
+              marginTop: 8,
+              textAlign: "center",
+              fontSize: 13,
+              color: "#6F6C86",
+              lineHeight: 1.5,
+            }}
+          >
+            {remaining > 0
+              ? `아직 ${remaining}종이 남았어요. 다르게 답해보면 새 유형을 만나요.`
+              : "64종을 모두 모았어요! 마음 박사 등극 🎓"}
+          </div>
         </div>
 
         {/* 연속 기록 위기 → 광고 보고 지키기 */}
@@ -132,12 +156,12 @@ export function HomeScreen({
         {/* CTA */}
         <div style={{ marginTop: 20 }}>
           <Button size="large" display="full" onClick={onStart}>
-            {doneToday ? "오늘 테스트 한 번 더" : "오늘의 테스트 시작"}
+            {doneToday ? "성격 테스트 한 번 더 하기" : "오늘의 성격 테스트 시작"}
           </Button>
         </div>
         <div style={{ marginTop: 12 }}>
           <Button variant="weak" size="large" display="full" onClick={onGoDex}>
-            마음 유형 도감 보기
+            {`유형 도감 보기 (${state.collected.length}/${TOTAL_TYPES})`}
           </Button>
         </div>
 

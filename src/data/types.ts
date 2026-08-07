@@ -187,3 +187,15 @@ export function rankOf(collectedCount: number): Rank {
 }
 
 export const TOTAL_TYPES = TYPES.length;
+
+/**
+ * 친구에게 보낼 결과 문구. 받은 사람이 앱을 찾아올 수 있게 앱 이름을 꼭 넣어요.
+ */
+export function shareTextOf(type: MindType): string {
+  return [
+    `내 성격 유형은 "${type.emoji} ${type.name}"!`,
+    type.oneLiner,
+    "",
+    `6문항 성격 유형 테스트로 64종 중 내 유형 찾기 · 마음 유형 도감`,
+  ].join("\n");
+}

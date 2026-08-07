@@ -8,6 +8,7 @@
     "build": "ait build",
     "deploy": "ait deploy",
     "lint": "eslint .",
+    "check:growth": "node --experimental-strip-types scripts/growth-check.ts",
     "format": "prettier --write ."
   },
   "dependencies": {

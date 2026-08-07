@@ -19,10 +19,11 @@ export function DexScreen({ collected, onBack }: Props) {
   return (
     <div style={{ paddingBottom: 32 }}>
       <Top
-        title={<Top.TitleParagraph size={22}>마음 유형 도감</Top.TitleParagraph>}
+        {/* 앱 이름은 토스 상단 바가 이미 보여줘요 — 여기선 이 화면이 뭔지만 적어요. */}
+        title={<Top.TitleParagraph size={22}>내가 모은 유형</Top.TitleParagraph>}
         subtitleBottom={
           <Top.SubtitleParagraph size={15}>
-            {`${rank.emoji} ${rank.label} · ${collected.length}/${TOTAL_TYPES} 수집`}
+            {`${rank.emoji} ${rank.label} · ${TOTAL_TYPES}종 성격 유형 중 ${collected.length}종 수집`}
           </Top.SubtitleParagraph>
         }
       />

@@ -166,6 +166,8 @@ function App() {
         onStart={() => {
           localStorage.setItem(ONBOARDED_KEY, "1");
           setOnboarded(true);
+          // 소개 → 홈 → 시작 두 번 누르게 하지 않고 바로 첫 질문으로 보내요.
+          setView("test");
           trackScreen("onboarding_done");
         }}
       />

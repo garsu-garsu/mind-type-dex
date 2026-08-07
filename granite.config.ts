@@ -19,5 +19,10 @@ export default defineConfig({
   outdir: "dist",
   // 심사 반려(관상 셀프 분석): 네이티브 뒤로가기와 앱 자체 화면 이동이 겹쳐 보인다는
   // 지적을 받아 네이티브 뒤로가기를 껐어요. 화면 안의 버튼과 시스템 뒤로가기로 이동해요.
-  navigationBar: { withBackButton: false, withHomeButton: false },
+  navigationBar: {
+    // 앱인토스 비게임 표준 내비게이션 바 — 좌측 뒤로가기는 모든 화면에서 동작해야 해요.
+    // 끄면 "표준 내비게이션 바 미적용"으로 심사 반려돼요.
+    withBackButton: true,
+    withHomeButton: false,
+  },
 });

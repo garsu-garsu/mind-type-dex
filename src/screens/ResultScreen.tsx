@@ -32,9 +32,10 @@ export function ResultScreen({
 }: Props) {
   const toast = useToast();
   const type = TYPES[typeId];
+  const remaining = TOTAL_TYPES - collectedCount;
 
   const onShare = async () => {
-    const ok = await shareResult(`${type.emoji} ${type.name}`);
+    const ok = await shareResult(type);
     if (ok) {
       track(EVENT.shareCompleted, { context: "result" });
       toast.openToast("공유했어요!");
@@ -46,7 +47,7 @@ export function ResultScreen({
       <Top
         title={
           <Top.TitleParagraph size={22}>
-            오늘의 마음 유형이 나왔어요
+            성격 유형 테스트 결과가 나왔어요
           </Top.TitleParagraph>
         }
       />
@@ -93,8 +94,15 @@ export function ResultScreen({
           )}
         </div>
 
+        {/* 공유 — 결과를 본 직후가 가장 보내고 싶은 순간이라 맨 위로 뒀어요 */}
+        <div style={{ marginTop: 18 }}>
+          <Button size="large" display="full" onClick={onShare}>
+            친구에게 내 유형 보내기
+          </Button>
+        </div>
+
         {/* 상세 해석 (광고 게이트) */}
-        <div style={{ marginTop: 20 }}>
+        <div style={{ marginTop: 12 }}>
           {unlocked ? (
             <div
               style={{
@@ -128,6 +136,20 @@ export function ResultScreen({
           🔥 연속 기록 {streakCount}일째
         </div>
 
+        {/* 도감 진행 — 다시 올 이유 */}
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: 6,
+            fontSize: 14,
+            color: "#5A5A72",
+          }}
+        >
+          {remaining > 0
+            ? `📒 도감 ${collectedCount}/${TOTAL_TYPES} · ${remaining}종이 남았어요`
+            : "📒 64종을 모두 모았어요!"}
+        </div>
+
         {/* 액션 */}
         <div
           style={{
@@ -137,9 +159,6 @@ export function ResultScreen({
             marginTop: 18,
           }}
         >
-          <Button variant="weak" display="full" onClick={onShare}>
-            결과 공유하기
-          </Button>
           <Button variant="weak" display="full" onClick={onExtraTest}>
             📺 광고 보고 오늘 테스트 하나 더
           </Button>
