@@ -3,7 +3,7 @@ import { Loader } from "@toss/tds-mobile";
 import { useEffect, useRef, useState } from "react";
 
 import "./App.css";
-import { BannerAd } from "./components/BannerAd";
+import { BannerAd, ImageBannerAd } from "./components/BannerAd";
 import { DexScreen } from "./screens/DexScreen";
 import { HomeScreen } from "./screens/HomeScreen";
 import { OnboardingScreen } from "./screens/OnboardingScreen";
@@ -217,6 +217,11 @@ export default function App() {
   return (
     <>
       <AppScreens />
+      {/* 이미지 강조형 배너 — 본문(문서 스크롤)의 맨 끝. 공통 화면 틀이 없어서
+          화면마다 넣는 대신 여기 한 곳에 둬요. 어느 화면이든 하나만 보여요. */}
+      <div style={{ padding: "24px 20px 0" }}>
+        <ImageBannerAd />
+      </div>
       {/* 배너는 화면마다 두지 않고 여기 하나만 띄워요 — 한 화면에 배너는 하나입니다.
           가려짐은 #root 의 padding-bottom(App.css)으로 막아요. */}
       <div

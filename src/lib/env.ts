@@ -3,6 +3,10 @@
 /** 배너 광고 그룹 ID (TossAds.attachBanner). 비어있으면 배너를 렌더링하지 않아요. */
 export const AD_GROUP_ID_BANNER = import.meta.env.VITE_AD_GROUP_ID_BANNER ?? "";
 
+/** 이미지 강조형 배너 광고 그룹 ID. 비어있으면 이미지 배너를 렌더링하지 않아요. */
+export const AD_GROUP_ID_BANNER_IMAGE =
+  import.meta.env.VITE_AD_GROUP_ID_BANNER_IMAGE ?? "";
+
 /** 전면형 광고 그룹 ID (loadFullScreenAd). 비어있으면 전면 광고를 건너뛰어요. */
 export const AD_GROUP_ID_INTERSTITIAL =
   import.meta.env.VITE_AD_GROUP_ID_INTERSTITIAL ?? "";
