@@ -3,7 +3,7 @@ import { getTossShareLink, share } from "@apps-in-toss/web-framework";
 import { shareTextOf, type MindType } from "./types";
 import { isInTossApp } from "../lib/tossEnv";
 
-// granite.config.ts 의 appName 과 같아야 링크가 이 앱으로 들어와요.
+// apps-in-toss.config.ts 의 appName 과 같아야 링크가 이 앱으로 들어와요.
 const DEEP_LINK = "intoss://mind-type-dex";
 const OG_IMAGE =
   "https://static.toss.im/appsintoss/13203/a029f591-1d32-4aed-ac9a-0072d1a5b21a.png";
