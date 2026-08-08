@@ -3,6 +3,7 @@ import { Loader } from "@toss/tds-mobile";
 import { useEffect, useRef, useState } from "react";
 
 import "./App.css";
+import { BannerAd } from "./components/BannerAd";
 import { DexScreen } from "./screens/DexScreen";
 import { HomeScreen } from "./screens/HomeScreen";
 import { OnboardingScreen } from "./screens/OnboardingScreen";
@@ -25,7 +26,7 @@ interface ResultInfo {
   streakCount: number;
 }
 
-function App() {
+function AppScreens() {
   const { state, completeTest, unlockDetail, streakAtRisk, keepStreak } =
     useDexState();
   const { watchThen } = useAdGate();
@@ -212,4 +213,26 @@ function App() {
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <AppScreens />
+      {/* 배너는 화면마다 두지 않고 여기 하나만 띄워요 — 한 화면에 배너는 하나입니다.
+          가려짐은 #root 의 padding-bottom(App.css)으로 막아요. */}
+      <div
+        style={{
+          position: "fixed",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 10,
+          background: "#FFFFFF",
+          padding: "0 20px",
+          paddingBottom: "env(safe-area-inset-bottom)",
+        }}
+      >
+        <BannerAd />
+      </div>
+    </>
+  );
+}

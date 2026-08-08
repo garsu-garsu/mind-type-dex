@@ -40,7 +40,7 @@ export const EVENT = {
   signup: "signup_complete", // { method: 'guest' }
   adRewarded: "ad_rewarded", // { context: 'detail_unlock' | 'extra_test' | 'streak_save' }
   adInterstitial: "ad_interstitial_shown", // { context }
-  adBannerImpression: "ad_banner_impression", // { slot }
+  adBannerImpression: "ad_banner_impression", // 배너는 앱 전체에 1개라 구분값 없음
   shareCompleted: "share_completed", // { context }
   notifyConsent: "notify_consent", // { result }
   // 앱 고유

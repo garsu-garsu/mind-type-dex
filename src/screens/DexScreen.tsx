@@ -1,7 +1,6 @@
 import { TextButton, Top } from "@toss/tds-mobile";
 import { useState } from "react";
 
-import { BannerAd } from "../components/BannerAd";
 import { TYPES, TOTAL_TYPES, rankOf } from "../data/types";
 
 interface Props {
@@ -108,9 +107,6 @@ export function DexScreen({ collected, onBack }: Props) {
         <TextButton size="medium" onClick={onBack}>홈으로</TextButton>
       </div>
 
-      <div style={{ marginTop: 16 }}>
-        <BannerAd slot="dex" />
-      </div>
     </div>
   );
 }

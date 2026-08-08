@@ -2,6 +2,8 @@
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
+  /* 하단 고정 배너(96px) 뒤로 본문 마지막 버튼이 숨지 않게 그만큼 비워둬요. */
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
 }
 
 @media (min-width: 481px) {

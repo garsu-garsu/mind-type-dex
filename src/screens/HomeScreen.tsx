@@ -1,6 +1,5 @@
 import { Button, ProgressBar, TextButton, Top, useToast } from "@toss/tds-mobile";
 
-import { BannerAd } from "../components/BannerAd";
 import { canRequestNotifyConsent, requestNotifyConsent } from "../data/notify";
 import { EVENT, track } from "../lib/analytics";
 import { TOTAL_TYPES, TYPES, rankOf } from "../data/types";
@@ -172,9 +171,6 @@ export function HomeScreen({
         )}
       </div>
 
-      <div style={{ marginTop: 20 }}>
-        <BannerAd slot="home" />
-      </div>
     </div>
   );
 }
