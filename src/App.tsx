@@ -6,7 +6,6 @@ import "./App.css";
 import { BannerAd, ImageBannerAd } from "./components/BannerAd";
 import { DexScreen } from "./screens/DexScreen";
 import { HomeScreen } from "./screens/HomeScreen";
-import { OnboardingScreen } from "./screens/OnboardingScreen";
 import { ResultScreen } from "./screens/ResultScreen";
 import { TestScreen } from "./screens/TestScreen";
 import { useAdGate } from "./hooks/useAdGate";
@@ -16,8 +15,6 @@ import { getTodayKey } from "./lib/dateKey";
 import { EVENT, track, trackScreen } from "./lib/analytics";
 
 type View = "home" | "test" | "result" | "dex";
-
-const ONBOARDED_KEY = "mtd:onboarded";
 
 interface ResultInfo {
   typeId: number;
@@ -33,10 +30,6 @@ function AppScreens() {
   const { maybeShow } = useInterstitialAd(3);
 
   const [today, setToday] = useState<string>("");
-  // 첫 실행이면 소개 화면부터 — 한 번 보고 나면 다시 뜨지 않아요.
-  const [onboarded, setOnboarded] = useState(
-    () => localStorage.getItem(ONBOARDED_KEY) != null,
-  );
   const [view, setView] = useState<View>("home");
   const [result, setResult] = useState<ResultInfo | null>(null);
 
@@ -158,20 +151,6 @@ function AppScreens() {
       >
         <Loader />
       </div>
-    );
-  }
-
-  if (!onboarded) {
-    return (
-      <OnboardingScreen
-        onStart={() => {
-          localStorage.setItem(ONBOARDED_KEY, "1");
-          setOnboarded(true);
-          // 소개 → 홈 → 시작 두 번 누르게 하지 않고 바로 첫 질문으로 보내요.
-          setView("test");
-          trackScreen("onboarding_done");
-        }}
-      />
     );
   }
 
