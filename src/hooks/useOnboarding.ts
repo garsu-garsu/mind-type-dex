@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react";
 
+import { trackScreen } from "../lib/analytics";
+
 const KEY = "mtd:onboarded";
 const STEP_KEY = "mtd:onboarded:step";
 
@@ -37,6 +39,7 @@ function writeDone(): void {
   } catch {
     /* noop */
   }
+  trackScreen("onboarding_done");
 }
 
 /**
